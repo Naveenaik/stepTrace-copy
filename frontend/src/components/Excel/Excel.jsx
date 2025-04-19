@@ -65,7 +65,7 @@ const Excel = () => {
 
       <div>
         <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
-          <h1 className="text-3xl font-bold mb-6">Excel CRUD Operations</h1>
+          <h1 className="text-3xl font-bold mb-6">Excel Operations</h1>
 
           {/* Search Person */}
           <div className="mb-6 w-full max-w-md">

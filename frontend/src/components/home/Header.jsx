@@ -15,7 +15,12 @@ const Header = () => {
           <li><a href="#terms-contact" className="text-lg text-gray-800 hover:text-purple-500">Terms & Contact</a></li>
           <li>
             <a className="bg-purple-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-600" href='/dashboard'>
-              Try Model
+              Try Model 1
+            </a>
+          </li>
+          <li>
+            <a className="bg-purple-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-600" href='/model2'>
+              Try Model 2
             </a>
           </li>
         </ul>

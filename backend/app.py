@@ -120,6 +120,45 @@ def maintain_uniform_rows_route():
                         "data": result.to_dict(orient='records')}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+
+#For Recorded video  
+from recorded_video.r_test import predict_person_from_video
+from recorded_video.r_train import r_train_model
+
+import os
+from werkzeug.utils import secure_filename
+
+@app.route('/r_predict', methods=['POST'])
+def r_predict():
+    if "video" not in request.files:
+        return jsonify({"error": "No video file provided"}), 400
+
+    video = request.files["video"]
+
+    temp_dir = os.path.join(os.getcwd(), "recoreded_video", "temp")
+    os.makedirs(temp_dir, exist_ok=True)
+
+    try:
+        temp_video_path = os.path.join(temp_dir, secure_filename(video.filename))
+        video.save(temp_video_path)
+        
+        # Predict person from video
+        predicted_person = predict_person_from_video(temp_video_path)
+        os.remove(temp_video_path)
+        
+        return jsonify({"predicted_person": predicted_person})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/r_train', methods=['POST'])
+def r_train_route():
+    try:
+        r_train_model() 
+        return jsonify({"message": "Model training completed successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)

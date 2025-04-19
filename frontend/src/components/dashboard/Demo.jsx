@@ -12,7 +12,7 @@ const Demo = () => {
   const [btnTest, setBtnTest] = useState(true);
   const [eventSource, setEventSource] = useState(null);
 
-  // const videoStreamURL = "http://192.168.64.6:8080/video";
+  // const videoStreamURL = "http://192.168.1.37:8080/video";
   const videoStreamURL = "http://192.168.43.1:8080/video";
 
   const restartServer = async () => {
